@@ -12,7 +12,7 @@
   <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
     <header class="bg-gradient-to-r from-red-400 to-orange-500 text-white text-center py-6">
       <h1 class="text-3xl font-bold">🍽️ School Mid-Day Meal Calculator</h1>
-      <p class="text-lg mt-2">Calculate quantities and costs for nutritious school meals</p>
+      <p class="text-lg mt-2">Calculate quantities and costs for nutritious school meals <br>Made by - Kushal Basavaraj Kambar</p>
     </header>
 
     <section class="p-6 bg-gray-100">
@@ -94,6 +94,86 @@
         </div>
       </div>
     </section>
+    <section class="p-6 mt-6">
+      <div class="bg-white rounded-lg shadow">
+        <div class="bg-blue-600 text-white py-3 text-center text-lg font-semibold">
+          📋 Cost Reference Table
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="p-3">Item</th>
+                <th class="p-3">1st-5th Standard</th>
+                <th class="p-3">6th-10th Standard</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-3">Vegetables</td>
+                <td class="p-3">50g (₹1.61)</td>
+                <td class="p-3">75g (₹2.38)</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="p-3">Salt</td>
+                <td class="p-3">2g (₹0.03)</td>
+                <td class="p-3">4g (₹0.11)</td>
+              </tr>
+              <tr>
+                <td class="p-3">Sambar Items/Masala</td>
+                <td class="p-3">- (₹0.51)</td>
+                <td class="p-3">- (₹0.63)</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="p-3">Dal</td>
+                <td class="p-3">20g (₹2.38)</td>
+                <td class="p-3">30g (₹3.69)</td>
+              </tr>
+              <tr>
+                <td class="p-3">Oil</td>
+                <td class="p-3">5g (₹0.62)</td>
+                <td class="p-3">7.5g (₹0.86)</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="p-3">Gas</td>
+                <td class="p-3">- (₹1.04)</td>
+                <td class="p-3">- (₹1.52)</td>
+              </tr>
+              <tr>
+                <td class="p-3">Rice/Wheat</td>
+                <td class="p-3">100g (₹0.00)</td>
+                <td class="p-3">150g (₹0.00)</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="p-3">Milk Powder</td>
+                <td class="p-3">18g (₹0.00)</td>
+                <td class="p-3">18g (₹0.00)</td>
+              </tr>
+              <tr>
+                <td class="p-3">Sugar</td>
+                <td class="p-3">10g (₹0.00)</td>
+                <td class="p-3">10g (₹0.00)</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="p-3">Malt</td>
+                <td class="p-3">5g (₹0.00)</td>
+                <td class="p-3">5g (₹0.00)</td>
+              </tr>
+              <tr>
+                <td class="p-3">Banana</td>
+                <td class="p-3">1 unit (₹6.00)</td>
+                <td class="p-3">1 unit (₹6.00)</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="p-3">Egg</td>
+                <td class="p-3">1 unit (₹5.50)</td>
+                <td class="p-3">1 unit (₹5.50)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
   </div>
 
   <script>
@@ -106,10 +186,14 @@
       gas: { primary: { quantity: 0, price: 1.04 }, secondary: { quantity: 0, price: 1.52 } },
       riceWheat: { primary: { quantity: 100, price: 0 }, secondary: { quantity: 150, price: 0 } },
       milkPowder: { primary: { quantity: 18, price: 0 }, secondary: { quantity: 18, price: 0 } },
-      sugar: { primary: { quantity: 10, price: 0 }, secondary: { quantity: 10, price: 0 } }
-    };
+      sugar: { primary: { quantity: 10, price: 0 }, secondary: { quantity: 10, price: 0 } },
+      malt: { primary: { quantity: 5, price: 0 }, secondary: { quantity: 5, price: 0 } },
+      banana: { primary: { quantity: 1, price: 6.00 }, secondary: { quantity: 1, price: 6.00 } },
+      egg: { primary: { quantity: 1, price: 5.50 }, secondary: { quantity: 1, price: 5.50 } }
+};
 
-    function formatItemName(key) {
+// Also update the formatItemName function to include the new items:
+function formatItemName(key) {
       const map = {
         vegetables: "Vegetables",
         salt: "Salt",
@@ -119,10 +203,13 @@
         gas: "Gas",
         riceWheat: "Rice/Wheat",
         milkPowder: "Milk Powder",
-        sugar: "Sugar"
+        sugar: "Sugar",
+        malt: "Malt",
+        banana: "Banana",
+        egg: "Egg"
       };
       return map[key] || key;
-    }
+}
 
     function calculateMeal() {
       const primaryStudents = parseInt(document.getElementById('primary-students').value) || 0;
